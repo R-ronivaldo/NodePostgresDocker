@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/R-ronivaldo/NodePostgresDocker#readme",
   "dependencies": {
+    "dotenv": "^15.0.0",
     "express": "^4.17.2",
+    "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
