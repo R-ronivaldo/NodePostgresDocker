@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const Mail = require("../lib/Mail");
+const Queue = require("../lib/Queue");
 
 module.exports = { 
     
@@ -14,12 +14,7 @@ module.exports = {
 
         const user = await User.create({ name, email});
 
-        await Mail.sendMail({
-            from: 'Fila Teste <fila@filateste.com.br>',
-            to: `${name} <${email}>`,
-            subject: 'Cadastro de Usuário',
-            html: `Olá, ${name}, cadastro realizado com sucesso!`
-        });
+        await Queue.add({ user });
 
         return res.json(user);
     }

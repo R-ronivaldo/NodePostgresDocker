@@ -8,13 +8,24 @@ services:
       - '3000:3000'
     volumes:
       - .:/usr/app
+    networks:
+      - networkOnFire
+  redis: 
+    image: redis
+    networks:
+      - networkOnFire
   db:
     image: 'postgres'
     environment:
-      POSTGRES_PASSWORD: '123456'
-      POSTGRES_USER: 'docker'
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: "${DB_USER}"
     volumes:
       - data:/var/lib/postgresql/data
+    networks:
+      - networkOnFire
+
+networks:
+  networkOnFire:
 
 volumes:
   data:
